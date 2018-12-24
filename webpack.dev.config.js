@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -64,6 +65,8 @@ module.exports = {
   },
   //插件
   plugins: [
+    new CleanWebpackPlugin(['dist/*.*']),
+    
     new webpack.HotModuleReplacementPlugin(),
 
     new HtmlWebpackPlugin({

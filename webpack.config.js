@@ -27,8 +27,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, './dist'),
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    filename: 'build/js/[name].[chunkhash].js',
+    chunkFilename: 'build/js/[name].[chunkhash].js',
     publicPath: '/'
   },
   module: {
@@ -57,7 +57,8 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 8192
+            limit: 8192,
+            name: 'build/images/[hash:8].[name].[ext]'
           }
         }]
       },

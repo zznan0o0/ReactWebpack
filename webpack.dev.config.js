@@ -29,8 +29,8 @@ module.exports = {
   /*输出到dist文件夹，输出文件名字为bundle.js*/
   output: {
     path: path.join(__dirname, './dist'),
-    filename: '[name].[hash].js', //这里生产环境应该用chunkhash替换hash
-    chunkFilename: '[name].[chunkhash].js'
+    filename: 'build/js/[name].[chunkhash].js',
+    chunkFilename: 'build/js/[name].[chunkhash].js',
   },
   //loader 让 webpack 能够去处理那些非 JavaScript 文件
   module: {
@@ -57,7 +57,8 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 8192
+            limit: 8192,
+            name: 'build/images/[hash:8].[name].[ext]'
           }
         }]
       }

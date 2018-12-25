@@ -29,7 +29,7 @@ module.exports = {
   /*输出到dist文件夹，输出文件名字为bundle.js*/
   output: {
     path: path.join(__dirname, './dist'),
-    filename: 'build/js/[name].[chunkhash].js',
+    filename: 'build/js/[name].[hash].js',
     chunkFilename: 'build/js/[name].[chunkhash].js',
   },
   //loader 让 webpack 能够去处理那些非 JavaScript 文件

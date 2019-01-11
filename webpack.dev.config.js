@@ -66,7 +66,7 @@ module.exports = {
   },
   //插件
   plugins: [
-    new CleanWebpackPlugin(['dist/*.*']),
+    new CleanWebpackPlugin(['dist/*']),
     
     new webpack.HotModuleReplacementPlugin(),
 

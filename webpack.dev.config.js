@@ -42,14 +42,20 @@ module.exports = {
 
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: [
+          path.resolve(__dirname, "node_modules"),
+          path.resolve(__dirname, "public/css"),
+        ],
         use: ['style-loader', 'css-loader?modules&localIdentName=[local]-[hash:base64:5]', 'postcss-loader']
       },
 
       {
         test: /\.css$/,
-        include: /node_modules/,
-        use: ['style-loader', 'css-loader']
+        include: [
+          path.resolve(__dirname, "node_modules"),
+          path.resolve(__dirname, "public/css"),
+        ],
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
 
       {

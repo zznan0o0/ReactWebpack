@@ -8,6 +8,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   resolve: {
     alias: {
+      Libs: path.join(__dirname, 'src/Libs'),
       Pages: path.join(__dirname, 'src/Pages'),
       Components: path.join(__dirname, 'src/Components'),
       Routes: path.join(__dirname, 'src/Routes'),

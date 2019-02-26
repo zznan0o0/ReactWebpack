@@ -2,6 +2,14 @@ const path = require('path');
 const webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const GenerateAssetPlugin = require('generate-asset-webpack-plugin'); 
+const fs = require('fs');
+
+const createServerConfig = function(compilation){
+  let cfgJson={ApiUrl:"192.168.11.90"};
+  let config = fs.readFileSync('src/WebConfig.js','utf-8');
+  return config;
+}
 
 module.exports = {
   resolve: {
@@ -85,7 +93,16 @@ module.exports = {
 
     new webpack.optimize.SplitChunksPlugin({
       name: 'vendor'
-    })
+    }),
+
+    new GenerateAssetPlugin({
+      filename: 'WebConfig.js',
+      fn: (compilation, cb) => {
+          cb(null, createServerConfig(compilation));
+      },
+      extraFiles: []
+    }),
+
   ],
 
   devServer: {

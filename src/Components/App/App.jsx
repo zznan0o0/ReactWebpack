@@ -12,7 +12,7 @@ export default class App extends Component{
       <Provider store={Store}>
         <HashRouter>
           <div>
-            <Navbar/>
+            {/* <Navbar/> */}
             {Routes}
           </div>
         </HashRouter>

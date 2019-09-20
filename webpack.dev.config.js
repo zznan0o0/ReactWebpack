@@ -69,7 +69,7 @@ module.exports = {
       },
 
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|jpeg|bmp)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -77,7 +77,18 @@ module.exports = {
             name: 'build/images/[hash:8].[name].[ext]'
           }
         }]
-      }
+      },
+
+      {
+        test: /\.(woff|woff2|svg|ttf|eot)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'build/icon/[hash:8].[name].[ext]'
+          }
+        }]
+      },
     ]
   },
   //插件

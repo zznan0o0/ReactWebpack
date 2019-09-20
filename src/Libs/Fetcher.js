@@ -1,16 +1,36 @@
-import { message } from 'antd';
+import { Toast} from 'antd-mobile';
+import 'antd-mobile/dist/antd-mobile.css';
+
+// Toast.success('Load success !!!', 2);
+// Toast.offline('This is a toast tips !!!', 3, null, true);
+// Toast.hide()
+// Toast.loading('Loading...', 0);
+
 
 class Fetcher {
+  postUrl(url, data, fn){
+    this.post(this.url(url), data, fn);
+  }
+
+  url(url){
+    return WEBCONFIG.domain + url;
+  }
+
   post(url, data, fn) {
+    Toast.loading('Loading...', 0);
     this.postRequest(url, data)
       .then(response => response.json())
-      .catch(error => message.error('请求出错了请联系技术人员！！！'))
+      .catch(error => {
+        Toast.hide();
+        Toast.fail('请求出错了请联系相关人员！！！', 3, null);
+      })
       .then(response => {
+        Toast.hide();
         if (response.state == 1) {
           fn(response);
         } else {
-          if (response.notice) message.info(response.notice);
-          else message.error('出错了请联系技术人员！！！');
+          if (response.notice) Toast.info(response.notice, 3, null);
+          else Toast.fail('请求出错了请联系相关人员！！！', 3, null);
         }
       });
     // .catch(error => message.error('请求出错了请联系技术人员！！！'));
